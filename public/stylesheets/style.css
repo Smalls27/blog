@@ -1,8 +1,54 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  padding: 0px;
+  margin: 0px;
+  outline: none;
 }
 
-a {
-  color: #00B7FF;
+#contentDivider {
+  background-color: black;
+  height: 2px;
+  width: 1000px;
+}
+
+#searchBlog {
+  width: 200px;
+}
+
+#blogLogo {
+  margin-left: 20px;
+}
+
+#listOfWorks {
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.marginSpace {
+  margin-top: 65px;
+}
+
+.hrStyle {
+  margin-top: 30px;
+}
+
+.blogTitle {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.listOfWorks {
+  height: 140px;
+  margin-top: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.works {
+  height: 90px;
+  background-color: chocolate;
+  margin-left: 10px;
+  margin-right: 10px;
 }
