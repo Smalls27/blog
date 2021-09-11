@@ -1,24 +1,41 @@
 <%- include("partials/header") %>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a id="blogLogo" class="navbar-brand" href="#">Blogrealm</a>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a id="blogLogo" class="navbar-brand" href="http://localhost:3000/">Blogrealm</a>
 
-    <div class="container">
-        <div class="row blogTitle">
-            <h1>Blogrealm</h1>
-        </div>
-    </div>
+	<ul class="navbar-nav mr-auto">
+		<li class=""></li>
+	</ul>
 
-    <div class="container marginSpace">
-        <div class="row">
-            <input id="searchBlog" class="col-md-7" type="text" placeholder="Search Blog Page" />
-            <div class="col-md-3"></div>
-            <button id="searchButton" class="col-md-2 btn btn-primary btn-block" type="button">Search</button>
-        </div>
-    </div>
-    <div class="container hrStyle">
-        <div class="row">
-            <hr class="col" id="contentDivider">
-        </div>
-    </div>
-<%- include("partials/footer") %> 
+	<form class="mr-3">
+		<button class="btn btn-primary" type="button">Login</button>
+	</form>
+	<form>
+		<button class="btn btn-primary" type="button">Create a blog account</button>
+	</form>
+</nav>
+
+<div class="container">
+	<div class="row blogTitle">
+		<h1>Blogrealm</h1>
+	</div>
+</div>
+
+<div class="container marginSpace">
+	<div class="row">
+		<input id="searchBlog" class="col-md-7" type="text" placeholder="Search Blog Page" />
+		<div class="col-md-3"></div>
+		<button id="searchButton" class="col-md-2 btn btn-primary btn-block" type="button">Search</button>
+	</div>
+</div>
+<div class="container hrStyle">
+	<div class="row">
+		<hr class="col" id="contentDivider" />
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<h4>Search results go here.</h4>
+	</div>
+</div>
+<%- include("partials/footer") %>

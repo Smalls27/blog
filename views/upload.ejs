@@ -1,0 +1,18 @@
+<%- include("partials/header") %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a id="blogLogo" class="navbar-brand" href="http://localhost:3000/">Blogrealm</a>
+</nav>
+
+<div class="container">
+	<form action="/upload" method="POST" enctype="multipart/form-data">
+		<label class="labelClass" for="file">Upload a picture.</label>
+		<div class="row marginSpace">
+			<input size="60" id="file" class="col centerFile" type="file" name="bloggerImage" />
+		</div>
+		<div class="row marginSpace2">
+			<input type="submit" class="btn btn-primary btn-block" />
+		</div>
+	</form>
+</div>
+
+<%- include("partials/footer") %>
