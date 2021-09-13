@@ -1,40 +1,36 @@
 <%- include("partials/header") %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a id="blogLogo" class="navbar-brand" href="http://localhost:3000/"
-    >Blogrealm</a
-  >
+	<a id="blogLogo" class="navbar-brand" href="http://localhost:3000/">Blogrealm</a>
 
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Dashboard</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="http://localhost:3000/merchandise"
-        >Merchandise</a
-      >
-    </li>
-  </ul>
-  <form class="mr-3">
-    <h6>Upload</h6>
-  </form>
-  <form class="mr-3">
-    <h6>Name of the Blogger</h6>
-  </form>
-  <form class="form-inline">
-    <button class="btn btn-primary btn-block" type="button">Log Out</button>
-  </form>
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item active">
+			<a class="nav-link" href="#">Dashboard</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="http://localhost:3000/merchandise">Merchandise</a>
+		</li>
+	</ul>
+	<form class="mr-3">
+		<h6><a id="upload" href="http://localhost:3000/upload">Upload</a></h6>
+	</form>
+	<form class="mr-3">
+		<h6>Name of the Blogger</h6>
+	</form>
+	<form class="form-inline">
+		<button class="btn btn-primary btn-block" type="button">Log Out</button>
+	</form>
 </nav>
 
 <div class="container">
-  <div class="row blogTitle">
-    <h1>Name of the Blog</h1>
-  </div>
+	<div class="row blogTitle">
+		<h1>Name of the Blog</h1>
+	</div>
 </div>
 
 <div class="listOfWorks">
-  <h4 id="listOfWorks">List of Works</h4>
-  <div class="works">
-    <h5>Works go here.</h5>
-  </div>
+	<h4 id="listOfWorks">List of Works</h4>
+	<div class="works">
+		<h5>Works go here.</h5>
+	</div>
 </div>
 <%- include("partials/footer") %>

@@ -27,6 +27,11 @@ body {
 	padding-left: 10px;
 }
 
+#upload {
+	text-decoration: none;
+	color: black;
+}
+
 .marginSpace {
 	margin-top: 65px;
 }
