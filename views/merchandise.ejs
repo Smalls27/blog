@@ -27,9 +27,21 @@
 	</div>
 </div>
 
-<div class="container">
-	<div class="row">
-		<h4>merch products here.</h4>
-	</div>
+<div class="container d-flex">
+	<% merchandises.forEach(merchandise => { %>
+		<div class="container smallContainer">
+			<div class="row">
+				<h1><%= merchandise.nameOfMerch %></h1>
+			</div>
+			<div class="row">
+				<img src="<%= merchandise.img.file %>" height="250" width="250" />
+			</div>
+			<div class="row">
+				<h5 class="col-md-5">$<%= merchandise.price %></h5>
+				<div class="col-md-2"></div>
+				<h5 class="col-md-5">Stk: <%= merchandise.quantity %></h5>
+			</div>
+		</div>
+	<% }) %> 
 </div>
 <%- include("partials/footer") %>

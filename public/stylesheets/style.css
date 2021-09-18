@@ -83,3 +83,22 @@ body {
 	margin-top: 150px;
 	font-size: 1.8em;
 }
+
+.textPadding {
+	padding-left: 50px;
+}
+
+.increasedTopMargin {
+	margin-top: 100px;
+}
+
+.footerStyle {
+	background-color: rgba(60, 60, 60, .5);
+	text-align: center;
+	padding-top: 40px;
+	height: 100px;
+}
+
+.smallContainer {
+	width: 260px;
+}

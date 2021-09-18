@@ -10,6 +10,7 @@ const dashboardRouter = require("./routes/dashboard");
 const merchRouter = require("./routes/merchandise");
 const usersViewRouter = require("./routes/usersViewOfBlog");
 const uploadRouter = require("./routes/upload");
+const createMerchRouter = require("./routes/createMerch");
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use("/dashboard", dashboardRouter);
 app.use("/merchandise", merchRouter);
 app.use("/blog", usersViewRouter);
 app.use("/upload", uploadRouter);
+app.use("/createmerch", createMerchRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

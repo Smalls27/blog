@@ -1,0 +1,30 @@
+<%- include("partials/header") %>
+    <div class="container marginSpace">
+        <h1>Create Merch</h1>
+        <p class="textPadding">Input your merchandise information so fans of your work can also enjoy the other aspects of your brand.</p>
+    </div>
+    <div class="container widthChange increasedTopMargin">
+        <form action="/createmerch" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-5 custom-file">
+                    <input type="file" name="merchImage" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+                <div class="col-md-1"></div>
+                <input class="col-md-6 form-control" type="text" name="merchName" placeholder="Name of merchandise" />
+            </div>
+            <div class="row marginSpace">
+                <input class="col-md-5 form-control" type="text" name="price" placeholder="Price" />
+                <div class="col-md-1"></div>
+                <input class="col-md-6 form-control" type="text" name="quantity" placeholder="Quantity" />
+            </div>
+            <div class="row">
+                <input class="btn btn-block btn-primary marginSpace2" type="submit" value="Create Merch" />
+            </div>
+        </form>
+
+        <div class="container">
+            <%= err %> 
+        </div>
+    </div>
+<%- include("partials/footer") %>  
