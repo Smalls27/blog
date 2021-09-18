@@ -8,11 +8,11 @@ const listOfWorks = require("../models/listOfWorks");
 const date = new Date();
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, "imageUploads");
+		cb(null, "./public/images/");
 	},
 
 	filename: (req, file, cb) => {
-		cb(null, file.originalname + "-" + date.toDateString());
+		cb(null, file.originalname);
 	},
 });
 
@@ -24,23 +24,31 @@ uploadRouter
 		res.render("upload");
 	})
 	.post(upload.single("bloggerImage"), (req, res) => {
+		console.log(req.file);
 		const bloggerImage = {
+			title: req.body.blogTitle,
 			img: {
-				data: fs.readFileSync(path.join("C:/Users/Owner/Desktop/BlogHostingWebsite/blogSearch/imageUploads/" + req.file.filename)),
-				contentType: "bloggerImage/jpg",
+				file: `images/${req.file.originalname}`,
+				fieldname: req.file.fieldname,
+				originalname: req.file.originalname,
+				encoding: req.file.encoding,
+				mimetype: req.file.mimetype,
+				destination: req.file.destination + req.file.originalname,
+				filename: req.file.filename,
+				path: req.file.path,
+				size: req.file.size,
 			},
 		};
 
-		listOfWorks
-			.create(bloggerImage)
-			.then((image) => {
-				if (image) {
-					res.redirect("/");
-				} else {
-					console.log("image does not exist...");
-				}
-			})
-			.catch((err) => console.log(err));
+		listOfWorks.create(bloggerImage)
+		.then((image) => {
+			if (image) {
+				res.redirect("/");
+			} else {
+				console.log("image does not exist...");
+			}
+		})
+		.catch((err) => console.log(err));
 	});
 
 module.exports = uploadRouter;

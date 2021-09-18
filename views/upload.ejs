@@ -3,12 +3,24 @@
 	<a id="blogLogo" class="navbar-brand" href="http://localhost:3000/">Blogrealm</a>
 </nav>
 
-<div class="container">
+<div class="container widthChange">
 	<form action="/upload" method="POST" enctype="multipart/form-data">
-		<label class="labelClass" for="file">Upload a picture.</label>
-		<div class="row marginSpace">
-			<input size="60" id="file" class="col centerFile" type="file" name="bloggerImage" />
+		<div class="row">
+			<label class="col text-center labelClass" for="file">Upload a picture.</label>
 		</div>
+		<div class="row">
+			<input class="mt-4 form-control" name="blogTitle" type="text" placeholder="Blog Title" />
+		</div>
+		
+		<div class="row marginSpace">
+			<div class="input-group mb-3">
+				<div class="custom-file">
+				  <input type="file" class="custom-file-input" name="bloggerImage" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+				  <label class="custom-file-label" for="inputGroupFile03">Choose a File</label>
+				</div>
+			  </div>
+		</div>
+
 		<div class="row marginSpace2">
 			<input type="submit" class="btn btn-primary btn-block" />
 		</div>
