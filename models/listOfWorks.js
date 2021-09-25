@@ -5,8 +5,12 @@ const lowSchema = new Schema({
 	title: {
 		type: String
 	},
+
+	file: {
+		type: String
+	},
+
 	img: {
-		file: String,
 		fieldname: String,
 		originalname: String,
 		encoding: String,
@@ -16,7 +20,15 @@ const lowSchema = new Schema({
 		path: String,
 		size: Number
 	},
-});
+
+	content: {
+		type: String
+	},
+
+	author: {
+		type: String
+	}
+}, { timestamps: true });
 
 const LowSchema = mongoose.model("Low", lowSchema);
 

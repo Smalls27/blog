@@ -7,8 +7,9 @@ const merchandiseSchema = new Schema({
         required: true
     },
 
+    file: String,
+
     img: {
-        file: String,
 		fieldname: String,
 		originalname: String,
 		encoding: String,
@@ -26,6 +27,10 @@ const merchandiseSchema = new Schema({
 
     quantity: {
         type: Number,
+    },
+
+    description: {
+        type: String
     }
 });
 

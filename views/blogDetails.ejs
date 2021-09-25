@@ -1,0 +1,44 @@
+<%- include("partials/header") %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a id="blogLogo" class="navbar-brand" href="http://localhost:3000/">Blogrealm</a>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/merchandise">Merchandise</a>
+            </li>
+        </ul>
+        <form class="mr-3">
+            <h6><a href="/upload">Upload Work</a></h6>
+        </form>
+        <form class="mr-3">
+            <h6>Name of the Blogger</h6>
+        </form>
+        <form class="form-inline">
+            <button class="btn btn-primary btn-block" type="button">Log Out</button>
+        </form>
+    </nav>
+
+    <div class="container marginSpace3">
+        <div class="container marginBottom">
+            <%= work.createdAt %> 
+        </div>
+        <div class="container">
+            <div class="row">
+                <img class="blogEdit" src="/<%= work.file %>" height="300" width="1150" />
+            </div>
+            <div class="row">
+                <h1 class="col-4"><%= work.title %></h1>
+                <div class="col-4"></div>
+                <h1 class="col-4 text-right"><%= work.author %></h1>
+            </div>
+            <div class="row marginSpace2">
+                <textarea id="workContent" cols="160" rows="40">
+                    <%= work.content %> 
+                </textarea>
+            </div>
+        </div>
+    </div>
+<%- include("partials/header") %>

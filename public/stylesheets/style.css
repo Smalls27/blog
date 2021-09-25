@@ -11,7 +11,7 @@ body {
 #contentDivider {
 	background-color: black;
 	height: 2px;
-	width: 1000px;
+	margin-top: 40px;
 }
 
 #searchBlog {
@@ -27,11 +27,6 @@ body {
 	padding-left: 10px;
 }
 
-#upload {
-	text-decoration: none;
-	color: black;
-}
-
 .marginSpace {
 	margin-top: 20px;
 }
@@ -40,8 +35,20 @@ body {
 	margin-top: 40px;
 }
 
+.marginSpace3 {
+	margin-top: 108px;
+}
+
 .hrStyle {
-	margin-top: 30px;
+	background-color: black;
+	margin-top: 60px;
+	margin-left: 160px;
+	margin-right: 160px;
+}
+
+.hrStyle2 {
+	background-color: black;
+	margin: 40px 80px 40px 80px;
 }
 
 .blogTitle {
@@ -52,6 +59,7 @@ body {
 
 .merchTitle {
 	margin-top: 30px;
+	margin-bottom: 50px;
 }
 
 .listOfWorks {
@@ -93,12 +101,48 @@ body {
 }
 
 .footerStyle {
-	background-color: rgba(60, 60, 60, .5);
+	background-color: rgba(60, 60, 60, .1);
 	text-align: center;
 	padding-top: 40px;
+	margin-top: 60px;
 	height: 100px;
 }
 
 .smallContainer {
 	width: 260px;
+	margin-bottom: 60px;
+}
+
+.smallContainer2 {
+	width: 100px;
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+.merchDetails {
+	width: 740px;
+	margin-top: 200px;
+}
+
+.detailStyle {
+	padding: 15px;
+}
+
+textarea {
+	padding: 20px;
+}
+
+.blogEdit {
+	border-radius: 10px;
+}
+
+.marginBottom {
+	margin-bottom: 20px;
 }

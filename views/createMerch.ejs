@@ -1,4 +1,24 @@
 <%- include("partials/header") %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a id="blogLogo" class="navbar-brand" href="/">Blogrealm</a>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/merchandise">Merchandise</a>
+            </li>
+        </ul>
+        
+        <form class="mr-3">
+            <h6>Name of the Blogger</h6>
+        </form>
+        <form class="form-inline">
+            <button class="btn btn-primary btn-block" type="button">Log Out</button>
+        </form>
+    </nav>
+
     <div class="container marginSpace">
         <h1>Create Merch</h1>
         <p class="textPadding">Input your merchandise information so fans of your work can also enjoy the other aspects of your brand.</p>
@@ -17,6 +37,9 @@
                 <input class="col-md-5 form-control" type="text" name="price" placeholder="Price" />
                 <div class="col-md-1"></div>
                 <input class="col-md-6 form-control" type="text" name="quantity" placeholder="Quantity" />
+            </div>
+            <div class="row marginSpace">
+                <textarea name="description" placeholder=" Describe your merchandise..." cols="67" rows="8"></textarea>
             </div>
             <div class="row">
                 <input class="btn btn-block btn-primary marginSpace2" type="submit" value="Create Merch" />

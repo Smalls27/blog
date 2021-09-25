@@ -18,15 +18,16 @@ const upload = multer({ storage: storage });
 
 createMerchRouter.route("/")
     .get((req, res) => {
-        res.render("createMerch");
+        var errMessage;
+        res.render("createMerch", { err: errMessage });
     })
     .post(upload.single("merchImage"), (req, res) => {
         console.log(req.file);
         const merchandise = {
             nameOfMerch: req.body.merchName,
+            file: `merchImage/${req.file.filename}`,
 
             img: {
-                file: `merchImage/${req.file.filename}`,
 		        fieldname: req.file.fieldname,
 		        originalname: req.file.originalname,
 		        encoding: req.file.encoding,
@@ -38,7 +39,8 @@ createMerchRouter.route("/")
             },
 
             price: req.body.price,
-            quantity: req.body.quantity
+            quantity: req.body.quantity,
+            description: req.body.description
         };
 
         Merchandises.create(merchandise)

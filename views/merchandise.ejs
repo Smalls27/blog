@@ -11,7 +11,7 @@
 		</li>
 	</ul>
 	<form class="mr-3">
-		<h6>Upload</h6>
+		<h6><a href="http://localhost:3000/createmerch">Upload Merchandise</a></h6>
 	</form>
 	<form class="mr-3">
 		<h6>Name of the Blogger</h6>
@@ -27,15 +27,17 @@
 	</div>
 </div>
 
-<div class="container d-flex">
+<div class="container d-flex flex-wrap">
 	<% merchandises.forEach(merchandise => { %>
 		<div class="container smallContainer">
-			<div class="row">
-				<h1><%= merchandise.nameOfMerch %></h1>
-			</div>
-			<div class="row">
-				<img src="<%= merchandise.img.file %>" height="250" width="250" />
-			</div>
+			<a class="anchorStyle" href="merchandise/<%= merchandise._id %>" >
+				<div class="row">
+					<h3><%= merchandise.nameOfMerch %></h3>
+				</div>
+				<div class="row">
+					<img src="<%= merchandise.file %>" height="250" width="250" />
+				</div>
+			</a>
 			<div class="row">
 				<h5 class="col-md-5">$<%= merchandise.price %></h5>
 				<div class="col-md-2"></div>

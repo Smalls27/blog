@@ -1,11 +1,9 @@
 const express = require("express");
 const uploadRouter = express.Router();
 const multer = require("multer");
-const fs = require("fs");
-const path = require("path");
 const listOfWorks = require("../models/listOfWorks");
 
-const date = new Date();
+
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, "./public/images/");
@@ -27,8 +25,9 @@ uploadRouter
 		console.log(req.file);
 		const bloggerImage = {
 			title: req.body.blogTitle,
+			file: `images/${req.file.originalname}`,
+
 			img: {
-				file: `images/${req.file.originalname}`,
 				fieldname: req.file.fieldname,
 				originalname: req.file.originalname,
 				encoding: req.file.encoding,
@@ -36,14 +35,17 @@ uploadRouter
 				destination: req.file.destination + req.file.originalname,
 				filename: req.file.filename,
 				path: req.file.path,
-				size: req.file.size,
+				size: req.file.size
 			},
+
+			content: req.body.content,
+			author: req.body.author
 		};
 
 		listOfWorks.create(bloggerImage)
 		.then((image) => {
 			if (image) {
-				res.redirect("/");
+				res.redirect("/dashboard");
 			} else {
 				console.log("image does not exist...");
 			}

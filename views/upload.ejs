@@ -1,24 +1,46 @@
 <%- include("partials/header") %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a id="blogLogo" class="navbar-brand" href="http://localhost:3000/">Blogrealm</a>
+	<a id="blogLogo" class="navbar-brand" href="/">Blogrealm</a>
+
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item active">
+			<a class="nav-link" href="/dashboard">Dashboard</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="/merchandise">Merchandise</a>
+		</li>
+	</ul>
+
+	<form class="mr-3">
+		<h6>Name of the Blogger</h6>
+	</form>
+	<form class="form-inline">
+		<button class="btn btn-primary btn-block" type="button">Log Out</button>
+	</form>
 </nav>
 
-<div class="container widthChange">
+<div class="container">
 	<form action="/upload" method="POST" enctype="multipart/form-data">
 		<div class="row">
-			<label class="col text-center labelClass" for="file">Upload a picture.</label>
+			<label class="col text-center labelClass" for="file">Upload Work</label>
 		</div>
-		<div class="row">
-			<input class="mt-4 form-control" name="blogTitle" type="text" placeholder="Blog Title" />
-		</div>
-		
-		<div class="row marginSpace">
-			<div class="input-group mb-3">
+		<div class="row marginSpace2">
+			<input class="col-md-6 form-control" name="blogTitle" type="text" placeholder="Blog Title" />
+			<div class="col-md-6 input-group">
 				<div class="custom-file">
-				  <input type="file" class="custom-file-input" name="bloggerImage" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
-				  <label class="custom-file-label" for="inputGroupFile03">Choose a File</label>
+				  <input multiple type="file" class="custom-file-input" name="bloggerImage" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+				  <label class="custom-file-label" for="inputGroupFile03">Upload Image</label>
 				</div>
-			  </div>
+			</div>
+		</div>
+		<div class="row marginSpace">
+			<div class="col-3"></div>
+			<input class="col-6 form-control" type="text" placeholder="Author" name="author" />
+			<div class="col-3"></div>
+		</div>
+		<hr class="hrStyle2" />
+		<div class="row marginSpace">
+			<textarea name="content" cols="160" rows="90"></textarea>
 		</div>
 
 		<div class="row marginSpace2">

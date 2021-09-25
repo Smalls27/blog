@@ -11,6 +11,8 @@ const merchRouter = require("./routes/merchandise");
 const usersViewRouter = require("./routes/usersViewOfBlog");
 const uploadRouter = require("./routes/upload");
 const createMerchRouter = require("./routes/createMerch");
+const detailsRouter = require("./routes/merchdetails");
+const blogDetailsRouter = require("./routes/blogDetails");
 
 const app = express();
 
@@ -35,6 +37,8 @@ app.use("/merchandise", merchRouter);
 app.use("/blog", usersViewRouter);
 app.use("/upload", uploadRouter);
 app.use("/createmerch", createMerchRouter);
+app.use("/merchandise", detailsRouter);
+app.use("/dashboard", blogDetailsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

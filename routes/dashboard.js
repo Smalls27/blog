@@ -1,10 +1,12 @@
 const express = require("express");
 const dashboardRouter = express.Router();
-const Images = require("../models/listOfWorks");
+const ListOfWorks = require("../models/listOfWorks");
 
-dashboardRouter.route("/").get(async (req, res) => {
-	const image = await Images.find({});
-	res.render("dashboard", { images: image });
-});
+dashboardRouter.route("/")
+	.get(async (req, res) => {
+		var work;
+		const image = await ListOfWorks.find({});
+		res.render("dashboard", { images: image, work: work });
+	});
 
 module.exports = dashboardRouter;
