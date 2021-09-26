@@ -101,7 +101,6 @@ body {
 }
 
 .footerStyle {
-	background-color: rgba(60, 60, 60, .1);
 	text-align: center;
 	padding-top: 40px;
 	margin-top: 60px;
@@ -145,4 +144,8 @@ textarea {
 
 .marginBottom {
 	margin-bottom: 20px;
+}
+
+.paddingTop {
+	padding-top: 130px;
 }

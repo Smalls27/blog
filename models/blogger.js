@@ -19,24 +19,20 @@ const bloggerSchema = new Schema({
 		required: true
 	},
 
-	listOfWorks: {
-		type: Array,
-		default: [],
+	genre: {
+		type: String,
+		required: true
 	},
 
-	merchandise: {
-		type: Array,
-		default: [],
-	},
+	listOfWorks: [{ type: Schema.Types.ObjectId, ref: "LowSchema"}],
 
-	followers: {
-		type: Array,
-		default: []
-	},
-	following: {
-		type: Array,
-		default: []
-	}
+	merchandise: [{ type: Schema.Types.ObjectId, ref: "MerchSchema"}],
+
+	followers: [{ type: Schema.Types.ObjectId, ref: "User"}],
+
+	following: [{ type: Schema.Types.ObjectId, ref: "Blogger"}]
 });
 
-module.exports = bloggerSchema;
+const Blogger = mongoose.model("Blogger", bloggerSchema);
+
+module.exports = Blogger;
