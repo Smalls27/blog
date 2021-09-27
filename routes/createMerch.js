@@ -4,6 +4,11 @@ const Merchandises = require("../models/merchandise");
 const Images = require("../models/listOfWorks");
 const multer = require("multer");
 
+const isLoggedIn = (req, res, next) => {
+    if (req.isAuthenticated()) return next();
+    res.redirect("/login"); 
+}
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "./public/merchImage/");
@@ -17,7 +22,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 createMerchRouter.route("/")
-    .get((req, res) => {
+    .get(isLoggedIn, (req, res) => {
         var errMessage;
         res.render("createMerch", { err: errMessage });
     })
@@ -54,6 +59,12 @@ createMerchRouter.route("/")
             }
         })
         .catch(err => console.log(err));
-    })
+    });
+
+createMerchRouter.route('/logout')
+	.get((req, res) => {
+		req.logout();
+		res.redirect('/login');
+	});
 
 module.exports = createMerchRouter;

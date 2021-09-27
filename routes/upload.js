@@ -3,6 +3,10 @@ const uploadRouter = express.Router();
 const multer = require("multer");
 const listOfWorks = require("../models/listOfWorks");
 
+const isLoggedIn = (req, res, next) => {
+    if (req.isAuthenticated()) return next();
+    res.redirect("/login"); 
+}
 
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
@@ -16,9 +20,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-uploadRouter
-	.route("/")
-	.get((req, res) => {
+uploadRouter.route("/")
+	.get(isLoggedIn, (req, res) => {
 		res.render("upload");
 	})
 	.post(upload.single("bloggerImage"), (req, res) => {
@@ -51,6 +54,12 @@ uploadRouter
 			}
 		})
 		.catch((err) => console.log(err));
+	});
+
+uploadRouter.route("/logout")
+	.get((req, res) => {
+		req.logOut();
+		res.redirect("/login");
 	});
 
 module.exports = uploadRouter;
