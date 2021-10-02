@@ -3,7 +3,7 @@ const usersViewRouter = express.Router();
 
 usersViewRouter.route("/")
   .get((req, res) => {
-    res.render("usersViewOfBlog");
+    res.render("blog");
   });
 
 module.exports = usersViewRouter;

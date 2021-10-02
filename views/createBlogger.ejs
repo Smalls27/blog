@@ -13,8 +13,17 @@
             <div class="container widthChange marginBottom">
                 <h3>Create account.</h3>
             </div>
-            <form action="/createBlogger" method="POST">
+            <form action="/createBlogger" method="POST" enctype="multipart/form-data">
                 <div class="container">
+                    
+                    <div class="row input-group marginBottom">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="image" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+                            <label class="custom-file-label" for="inputGroupFile03">Upload Image</label>
+                        </div>
+                    </div>
+                
+
                     <div class="row marginBottom">
                         <input class="col-md-5 form-control" type="text" name="username" placeholder="Username" />
                         <div class="col-1"></div>

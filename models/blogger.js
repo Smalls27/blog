@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-require("./listOfWorks");
 
 const bloggerSchema = new Schema({
 	username: {
@@ -23,6 +22,22 @@ const bloggerSchema = new Schema({
 	genre: {
 		type: String,
 		required: true
+	},
+
+	file: {
+		type: String,
+		required: true
+	},
+
+	img: {
+		fieldname: String,
+		originalname: String,
+		encoding: String,
+		mimetype: String,
+		destination: String,
+		filename: String,
+		path: String,
+		size: Number
 	},
 
 	likedBlogs: [{ type: Schema.Types.ObjectId, ref: "LowSchema"}],

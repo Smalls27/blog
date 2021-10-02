@@ -14,7 +14,7 @@ dashboardRouter.route("/")
 		.populate("listOfWorks")
 		.then(list => {
 			// console.log(list.listOfWorks)
-		res.render("dashboard", { workList: list.listOfWorks, work: work, blogName: list.blogName });
+		res.render("dashboard", { workList: list.listOfWorks, work: work, blogName: list.blogName, imageFile: list.file });
 		})
 		.catch(err => console.log(err));
 	});

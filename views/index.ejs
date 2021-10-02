@@ -22,9 +22,11 @@
 
 <div class="container marginSpace">
 	<div class="row">
-		<input id="searchBlog" class="col-md-7" type="text" placeholder="Search Blog Page" />
-		<div class="col-md-3"></div>
-		<button id="searchButton" class="col-md-2 btn btn-primary btn-block" type="button">Search</button>
+		<form action="/" method="POST" class="form-inline moreWidth">
+			<input id="searchBlog" name="search" class="col-md-7 form-control" type="text" placeholder="Search Blog Page" />
+			<div class="col-md-3"></div>
+			<button id="searchButton" class="col-md-2 btn btn-primary btn-block" type="submit">Search</button>
+		</form>
 	</div>
 </div>
 <div class="container">
@@ -33,9 +35,13 @@
 	</div>
 </div>
 
-<div class="container">
-	<div class="row">
-		<h4>Search results go here.</h4>
-	</div>
+<div class="container d-flex flex-wrap">
+	<% searchItems.forEach(searchItem => { %>
+		<div class="container smallContainer3">
+			<a href="index/<%= searchItem._id %>">
+				<img src="<%= searchItem.file %>" height="225" width="225"/>
+			</a>
+		</div>
+	<% }); %>   
 </div>
 <%- include("partials/footer") %>
