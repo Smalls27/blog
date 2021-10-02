@@ -1,7 +1,8 @@
 const express = require("express");
 const createMerchRouter = express.Router();
 const Merchandises = require("../models/merchandise");
-const Images = require("../models/listOfWorks");
+const listOfWorks = require("../models/listOfWorks");
+const Bloggers = require("../models/blogger");
 const multer = require("multer");
 
 const isLoggedIn = (req, res, next) => {
@@ -27,7 +28,6 @@ createMerchRouter.route("/")
         res.render("createMerch", { err: errMessage });
     })
     .post(upload.single("merchImage"), (req, res) => {
-        console.log(req.file);
         const merchandise = {
             nameOfMerch: req.body.merchName,
             file: `merchImage/${req.file.filename}`,
@@ -51,8 +51,15 @@ createMerchRouter.route("/")
         Merchandises.create(merchandise)
         .then(async merchandise => {
             if (merchandise) {
-                const image = await Images.find({});
-                res.render("dashboard", { images: image});
+                var blogName;
+                var work;
+                var workList = await listOfWorks.find({});
+                const merchItem = await Merchandises.find({});
+                const blogger = await Bloggers.findOne({ _id: req.user._id });
+                const merch = await Merchandises.findOne({ _id: merchandise._id});
+                blogger.merchandise.push(merch);
+                await blogger.save();
+                res.render("dashboard", { merchItems: merchItem, blogName: blogger.blogName, work: work, workList: workList});
             } else {
                 const errMessage = "Something went wrong...";
                 res.render("createMerch", { err: errMessage });

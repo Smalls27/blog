@@ -29,7 +29,7 @@ const bloggerSchema = new Schema({
 
 	listOfWorks: [{ type: Schema.Types.ObjectId, ref: "Low"}],
 
-	merchandise: [{ type: Schema.Types.ObjectId, ref: "MerchSchema"}],
+	merchandise: [{ type: Schema.Types.ObjectId, ref: "Merchandise"}],
 
 	followers: [{ type: Schema.Types.ObjectId, ref: "User"}],
 

@@ -14,7 +14,7 @@ dashboardRouter.route("/")
 		.populate("listOfWorks")
 		.then(list => {
 			// console.log(list.listOfWorks)
-		res.render("dashboard", { workList: list.listOfWorks, work: work, blogName: req.user.blogName });
+		res.render("dashboard", { workList: list.listOfWorks, work: work, blogName: list.blogName });
 		})
 		.catch(err => console.log(err));
 	});

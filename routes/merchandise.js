@@ -1,11 +1,15 @@
 const express = require("express");
 const merchRouter = express.Router();
 const Merchandises = require("../models/merchandise");
+const Bloggers = require("../models/blogger");
 
 merchRouter.route("/")
   .get(async (req, res) => {
-    const merch = await Merchandises.find({});
-    res.render("merchandise", { merchandises: merch});
+    const blogger = await Bloggers.findOne({ _id: req.user._id })
+    .populate("merchandise")
+    .then(merchList => {
+      res.render("merchandise", { merchandises: merchList.merchandise, blogName: merchList.blogName });
+    })
   });
 
 module.exports = merchRouter;

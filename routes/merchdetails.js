@@ -1,6 +1,7 @@
 const express = require("express");
 const detailsRouter = express.Router();
 const Merchandise = require("../models/merchandise");
+const Bloggers = require("../models/blogger");
 
 detailsRouter.route("/:id")
     .get(async (req, res) => {
