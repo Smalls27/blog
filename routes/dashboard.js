@@ -1,6 +1,6 @@
 const express = require("express");
 const dashboardRouter = express.Router();
-const ListOfWorks = require("../models/listOfWorks");
+const Bloggers = require("../models/blogger");
 
 const isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) return next();
@@ -10,8 +10,13 @@ const isLoggedIn = (req, res, next) => {
 dashboardRouter.route("/")
 	.get(isLoggedIn, async (req, res) => {
 		var work;
-		const image = await ListOfWorks.find({});
-		res.render("dashboard", { images: image, work: work });
+		await Bloggers.findOne({ _id: req.user._id })
+		.populate("listOfWorks")
+		.then(list => {
+			// console.log(list.listOfWorks)
+		res.render("dashboard", { workList: list.listOfWorks, work: work, blogName: req.user.blogName });
+		})
+		.catch(err => console.log(err));
 	});
 
 dashboardRouter.route('/logout')

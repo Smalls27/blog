@@ -22,7 +22,7 @@ createBlogRouter.route("/")
             res.render("login");
         })
         .catch(err => console.log(err));
-    })
+    });
 
 
 module.exports = createBlogRouter;

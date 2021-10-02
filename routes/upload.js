@@ -2,6 +2,7 @@ const express = require("express");
 const uploadRouter = express.Router();
 const multer = require("multer");
 const listOfWorks = require("../models/listOfWorks");
+const Bloggers = require("../models/blogger");
 
 const isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) return next();
@@ -25,7 +26,6 @@ uploadRouter.route("/")
 		res.render("upload");
 	})
 	.post(upload.single("bloggerImage"), (req, res) => {
-		console.log(req.file);
 		const bloggerImage = {
 			title: req.body.blogTitle,
 			file: `images/${req.file.originalname}`,
@@ -46,8 +46,12 @@ uploadRouter.route("/")
 		};
 
 		listOfWorks.create(bloggerImage)
-		.then((image) => {
-			if (image) {
+		.then(async work => {
+			if (work) {
+				const blogger = await Bloggers.findOne({ _id: req.user._id });
+				const workListItem = await listOfWorks.findOne({ _id: work._id });
+				blogger.listOfWorks.push(workListItem);
+				await blogger.save();
 				res.redirect("/dashboard");
 			} else {
 				console.log("image does not exist...");
