@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+require("./listOfWorks");
 
 const bloggerSchema = new Schema({
 	username: {
@@ -24,7 +25,9 @@ const bloggerSchema = new Schema({
 		required: true
 	},
 
-	listOfWorks: [{ type: Schema.Types.ObjectId, ref: "LowSchema"}],
+	likedBlogs: [{ type: Schema.Types.ObjectId, ref: "LowSchema"}],
+
+	listOfWorks: [{ type: Schema.Types.ObjectId, ref: "Low"}],
 
 	merchandise: [{ type: Schema.Types.ObjectId, ref: "MerchSchema"}],
 
@@ -33,6 +36,4 @@ const bloggerSchema = new Schema({
 	following: [{ type: Schema.Types.ObjectId, ref: "Blogger"}]
 });
 
-const Blogger = mongoose.model("Blogger", bloggerSchema);
-
-module.exports = Blogger;
+module.exports = mongoose.model("Blogger", bloggerSchema);

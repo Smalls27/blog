@@ -5,20 +5,13 @@
 	<ul class="navbar-nav mr-auto">
 		
 	</ul>
-	
-	<form class="mr-3">
-		<h6>Name of the Blogger</h6>
-	</form>
-	<form class="form-inline">
-		<button class="btn btn-primary btn-block" type="button">Log Out</button>
-	</form>
 </nav>
 
 <div class="container marginSpace3">
     <div class="row">
         <div class="col-5 container marginSpace2 widthChange">
             <div class="container widthChange marginBottom">
-                <h3>Create a blog account.</h3>
+                <h3>Create account.</h3>
             </div>
             <form action="/createBlogger" method="POST">
                 <div class="container">
@@ -35,30 +28,8 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <button class="btn btn-primary btn-block" type="submit">Create blog account</button>
+                        <button class="btn btn-primary btn-block" type="submit">Create account</button>
                     </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="col-2 container text-center paddingTop">
-            <h1>OR</h1>
-        </div>
-
-        <div class="col-5 container widthChange marginSpace2">
-            <div class="container widthChange marginBottom">
-                <h3>Create a user account</h3>
-            </div>
-            <form action="/createBlogger" method="POST">
-                <div class="row marginBottom">
-                    <input class="col form-control" type="text" name="username" placeholder="Username" />
-                </div>
-                <div class="row">
-                    <input class="col form-control" type="password" name="password" placeholder="Password" />
-                </div>
-                <hr>
-                <div class="row">
-                    <button class="btn btn-primary btn-block" type="submit">Create user account</button>
                 </div>
             </form>
         </div>
