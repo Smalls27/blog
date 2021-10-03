@@ -53,13 +53,23 @@ createMerchRouter.route("/")
             if (merchandise) {
                 var blogName;
                 var work;
-                var workList = await listOfWorks.find({});
                 const merchItem = await Merchandises.find({});
                 const blogger = await Bloggers.findOne({ _id: req.user._id });
                 const merch = await Merchandises.findOne({ _id: merchandise._id});
                 blogger.merchandise.push(merch);
                 await blogger.save();
-                res.render("dashboard", { merchItems: merchItem, blogName: blogger.blogName, work: work, workList: workList});
+                await Bloggers.findById({ _id: req.user.id })
+                .populate("listOfWorks").
+                then(blogger => {
+                    res.render("dashboard", { 
+                        merchItems: merchItem, 
+                        blogName: blogger.blogName, 
+                        work: work, 
+                        workList: blogger.listOfWorks,
+                        imageFile: blogger.file 
+                    })
+                })
+                .catch(err => console.log(err));
             } else {
                 const errMessage = "Something went wrong...";
                 res.render("createMerch", { err: errMessage });

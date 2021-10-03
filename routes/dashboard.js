@@ -10,6 +10,7 @@ const isLoggedIn = (req, res, next) => {
 dashboardRouter.route("/")
 	.get(isLoggedIn, async (req, res) => {
 		var work;
+		var imageFile;
 		await Bloggers.findOne({ _id: req.user._id })
 		.populate("listOfWorks")
 		.then(list => {

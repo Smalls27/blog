@@ -38,8 +38,9 @@
 <div class="container d-flex flex-wrap">
 	<% searchItems.forEach(searchItem => { %>
 		<div class="container smallContainer3">
-			<a href="index/<%= searchItem._id %>">
+			<a href="blog/<%= searchItem._id %>">
 				<img src="<%= searchItem.file %>" height="225" width="225"/>
+				<h5><%= searchItem.blogName %></h5>
 			</a>
 		</div>
 	<% }); %>   

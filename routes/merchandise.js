@@ -8,7 +8,7 @@ merchRouter.route("/")
     const blogger = await Bloggers.findOne({ _id: req.user._id })
     .populate("merchandise")
     .then(merchList => {
-      res.render("merchandise", { merchandises: merchList.merchandise, blogName: merchList.blogName });
+      res.render("merchandise", { merchandises: merchList.merchandise, blogName: merchList.blogName, imageFile: merchList.file });
     })
   });
 

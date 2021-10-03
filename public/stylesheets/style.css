@@ -158,8 +158,20 @@ textarea {
 	padding-top: 130px;
 }
 
+.morePadding{
+	padding-top: 40px;
+}
+
 .paddingZero {
 	padding: 0px;
+}
+
+.paddingLeft {
+	padding-left: 30px;
+}
+
+.paddingTop {
+	padding-top: 10px;
 }
 
 .moreWidth {

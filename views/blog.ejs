@@ -8,15 +8,44 @@
 </div>
 
 <div class="container">
-	<div class="container bloggerMerch">
-		<h4 id="bloggerMerch">Name of the Blog's Merch</h4>
-		<div class="container">
-			<h5>Bloggers merch goes here.</h5>
+	<div class="row">
+		<h1 class="col-2"><%= blogger.blogName %></h1>
+		<div class="col-2 text-center paddingTop">
+			<button class="btn btn-primary btn-block">Certify</button>
 		</div>
 	</div>
+
 	<hr>
-	<div class="container">
-		<h1>Articles go here.</h1>
+
+	<div class="container d-flex flex-wrap morePadding">
+		<% blogger.merchandise.forEach(merch => { %>
+			<div class="container smallContainer2">
+				<div class="row">
+					<h6><%= merch.nameOfMerch %></h6>
+				</div>
+				<div class="row">
+					<img src="/<%= merch.file %>" height="100" width="100"/>	
+				</div>
+				<div class="row paddingLeft">
+					<h6>$<%= merch.price %></h6>
+				</div>
+			</div>
+		<% }) %> 
+	</div>
+
+	<hr>
+
+	<div class="container d-flex flex-wrap">
+		<div class="container smallsContainer2">
+			<% blogger.listOfWorks.forEach(work => { %>
+				<div class="row">
+					<img src="/<%= work.file %>" height="200" width="200" />
+				</div>
+				<div class="row">
+					<h5><%= work.title %></h5>
+				</div>
+			<% }) %> 
+		</div>
 	</div>
 </div>
 <%- include("partials/footer") %>
