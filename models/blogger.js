@@ -40,13 +40,13 @@ const bloggerSchema = new Schema({
 		size: Number
 	},
 
-	likedBlogs: [{ type: Schema.Types.ObjectId, ref: "LowSchema"}],
+	likedBlogs: [{ type: Schema.Types.ObjectId, ref: "Low"}],
 
 	listOfWorks: [{ type: Schema.Types.ObjectId, ref: "Low"}],
 
 	merchandise: [{ type: Schema.Types.ObjectId, ref: "Merchandise"}],
 
-	followers: [{ type: Schema.Types.ObjectId, ref: "User"}],
+	followers: [{ type: Schema.Types.ObjectId, ref: "Blogger"}],
 
 	following: [{ type: Schema.Types.ObjectId, ref: "Blogger"}]
 });
