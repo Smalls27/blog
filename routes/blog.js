@@ -2,8 +2,14 @@ const express = require("express");
 const usersViewRouter = express.Router();
 const Bloggers = require("../models/blogger");
 
+const isLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) return next();
+  res.redirect("/login"); 
+}
+
+
 usersViewRouter.route("/:id")
-  .get(async (req, res) => {
+  .get(isLoggedIn, async (req, res) => {
     const id = req.params.id;
     await Bloggers.findById(id)
     .populate("listOfWorks")
@@ -18,16 +24,20 @@ usersViewRouter.route("/:id")
     const id = req.params.id
     await Bloggers.findById(id)
     .then(blogger => {
-      if (blogger._id === req.user._id || blogger.followers.includes(req.user._id)) {
-        const followers = blogger.followers.length;
-        res.render("blog", { blogger: blogger, followers: followers});
-      } else {
-        blogger.followers.push(req.user._id);
-        blogger.save();
-        const followers = blogger.followers.length;
-        res.render("blog", { blogger: blogger, followers: followers});
+      const certify = "Certify"
+      if (req.user !== undefined) {
+        if (blogger.followers.includes(req.user._id)) {
+          const followers = blogger.followers.length;
+          res.render("blog", { blogger: blogger, followers: followers, certify: certify});
+        } else {
+          blogger.followers.push(req.user._id);
+          blogger.save();
+          const followers = blogger.followers.length;
+          res.render("blog", { blogger: blogger, followers: followers, certify: "Certified"});
+        }
       }
     })
+    .catch(err => console.log(err));
   })
 
 module.exports = usersViewRouter;

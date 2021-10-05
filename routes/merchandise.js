@@ -3,8 +3,13 @@ const merchRouter = express.Router();
 const Merchandises = require("../models/merchandise");
 const Bloggers = require("../models/blogger");
 
+const isLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) return next();
+  res.redirect("/login"); 
+}
+
 merchRouter.route("/")
-  .get(async (req, res) => {
+  .get(isLoggedIn, async (req, res) => {
     const blogger = await Bloggers.findOne({ _id: req.user._id })
     .populate("merchandise")
     .then(merchList => {

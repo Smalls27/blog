@@ -2,9 +2,13 @@ const express = require("express");
 const router = express.Router();
 const Bloggers = require("../models/blogger");
 
-/* GET home page. */
+const isLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) return next();
+  res.redirect("/login"); 
+}
+
 router.route("/")
-  .get(async (req, res) => {
+  .get(isLoggedIn, async (req, res) => {
     const searchList = [];
     res.render("index", { searchItems: searchList, searchErr: " "});
   })

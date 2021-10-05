@@ -2,8 +2,13 @@ const express = require("express");
 const blogDetailsRouter = express.Router();
 const listOfWorks = require("../models/listOfWorks");
 
+const isLoggedIn = (req, res, next) => {
+    if (req.isAuthenticated()) return next();
+    res.redirect("/login"); 
+}
+
 blogDetailsRouter.route("/:id")
-    .get(async (req, res) => {
+    .get(isLoggedIn, async (req, res) => {
         var image;
         const id = req.params.id;
         await listOfWorks.findById(id)
