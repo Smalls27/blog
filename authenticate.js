@@ -19,7 +19,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
 }));
 
 passport.serializeUser(function (user, done) {
-	done(null, user.id);
+	done(null, user._id);
 });
 
 passport.deserializeUser(function (id, done) {
