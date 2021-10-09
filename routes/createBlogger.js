@@ -18,7 +18,7 @@ const upload = multer({ storage: storage});
 
 createBlogRouter.route("/")
     .get((req, res) => {
-        res.render("createBlogger");
+        res.render("createBlogger", { errMessage: " " });
     })
     .post(upload.single("image"), async (req, res) => {
         const salted = 10;
@@ -41,9 +41,19 @@ createBlogRouter.route("/")
 			}
         }
 
-        Bloggers.create(newBlogger)
+        await Bloggers.findOne({ username: req.body.username })
         .then(blogger => {
-            res.render("login");
+            if (blogger) {
+                if (blogger.username === req.body.username) {
+                    res.render("createBlogger", { errMessage: "Username attached to an account that already exists."});
+                } 
+            } else {
+                Bloggers.create(newBlogger)
+                .then(blogger => {
+                    res.render("login");
+                })
+                .catch(err => console.log(err));
+            }
         })
         .catch(err => console.log(err));
     });

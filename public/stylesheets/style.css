@@ -31,6 +31,10 @@ body {
 	margin-bottom: 30px;
 }
 
+#workContent {
+	border: 3px solid rgb(255, 255, 255);
+}
+
 .marginSpace {
 	margin-top: 20px;
 }

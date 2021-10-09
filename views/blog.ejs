@@ -12,12 +12,13 @@
 		<h1 class="col-10"><%= blogger.blogName %></h1>
 		<form action="/blog/<%= blogger._id %>" method="POST" class="col-2 text-center paddingTop">
 			<div>
-				<button class="btn btn-primary btn-block" type="submit"><%= certify %> </button>
+				<button class="btn btn-primary btn-block" type="submit"><%= certify %></button>
 			</div>
 		</form>
 	</div>
 	<div class="row marginSpace">
-		<h5 class="col">Followers: <%= followers %></h5>
+		<h5 class="col-2">Followers: <%= followers %></h5>
+		<h5 class="col-2">Following: <%= following %></h5>
 	</div>
 
 	<hr>
@@ -29,7 +30,9 @@
 					<h6><%= merch.nameOfMerch %></h6>
 				</div>
 				<div class="row">
-					<img src="/<%= merch.file %>" height="100" width="100"/>	
+					<a class="anchorStyle" href="/merchandise/<%= merch._id %>">
+						<img src="/<%= merch.file %>" height="100" width="100"/>
+					</a>
 				</div>
 				<div class="row paddingLeft">
 					<h6>$<%= merch.price %></h6>
@@ -44,7 +47,9 @@
 		<div class="container smallsContainer2">
 			<% blogger.listOfWorks.forEach(work => { %>
 				<div class="row">
-					<img src="/<%= work.file %>" height="200" width="200" />
+					<a class="anchorStyle" href="/dashboard/<%= work._id %>">
+						<img src="/<%= work.file %>" height="200" width="200" />
+					</a>
 				</div>
 				<div class="row">
 					<h5><%= work.title %></h5>

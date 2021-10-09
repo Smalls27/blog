@@ -17,29 +17,39 @@ usersViewRouter.route("/:id")
     .populate("merchandise")
     .then(blogger => {
       const followers = blogger.followers.length;
-      res.render("blog", { blogger: blogger, followers: followers, certify: certify});
+      const following = blogger.following.length;
+      res.render("blog", { blogger: blogger, followers: followers, certify: certify, following: following});
     })
     .catch(err => console.log(err));
   })
   .post(async (req, res) => {
     const id = req.params.id
     await Bloggers.findById(id)
+    .populate("listOfWorks")
+    .populate("merchandise")
     .then(blogger => {
   
       if (req.user) {
         if (req.user.username === blogger.username) {
           const followers = blogger.followers.length;
-          res.render("blog", { blogger: blogger, followers: followers, certify: "Certify"});
-        } else if (!blogger.followers.includes(req.user._id)) {
+          const following = blogger.following.length;
+          res.render("blog", { blogger: blogger, followers: followers, certify: "Certify", following: following });
+        } else if (!blogger.followers.includes(req.user._id) || !req.user.following.includes(blogger._id)) {
           blogger.followers.push(req.user._id);
+          req.user.following.push(blogger._id);
           blogger.save();
+          req.user.save();
           const followers = blogger.followers.length;
-          res.render("blog", { blogger: blogger, followers: followers, certify: "Decertify"});
+          const following = blogger.following.length;
+          res.render("blog", { blogger: blogger, followers: followers, certify: "Decertify", following: following });
         } else {
           blogger.followers.pop(req.user._id);
+          req.user.following.pop(blogger._id);
           blogger.save();
+          req.user.save();
           const followers = blogger.followers.length;
-          res.render("blog", {blogger: blogger, followers: followers, certify: "Certify"})
+          const following = blogger.following.length;
+          res.render("blog", {blogger: blogger, followers: followers, certify: "Certify", following: following })
         }
       }
     })
