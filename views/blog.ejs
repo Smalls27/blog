@@ -44,18 +44,34 @@
 	<hr>
 
 	<div class="container d-flex flex-wrap">
-		<div class="container smallsContainer2">
+		
 			<% blogger.listOfWorks.forEach(work => { %>
-				<div class="row">
-					<a class="anchorStyle" href="/dashboard/<%= work._id %>">
-						<img src="/<%= work.file %>" height="200" width="200" />
-					</a>
-				</div>
-				<div class="row">
-					<h5><%= work.title %></h5>
+				<div class="container smallContainer4">
+					<div class="row">
+						<a class="anchorStyle" href="/dashboard/<%= work._id %>">
+							<img src="/<%= work.file %>" height="200" width="200" />
+						</a>
+					</div>
+					<div class="row marginBottom1">
+						<h5><%= work.title %></h5>
+					</div>
+					<div class="row height">
+						<form class="form col-4" action="/blog/<%= blogger._id %>/<%= work._id %>" method="POST">
+							<button class="noButton" type="submit">
+								<i class="fa fa-book fa-lg" aria-hidden="true" style="color: purple;"></i>
+							</button>
+						</form>
+						<h6 class="col-8"><%= likes %></h6>
+					</div>
+					<div class="row height" style="background-color: orange">
+						<i class="fa fa-scissors fa-lg col-4" aria-hidden="true" style="color: red;"></i>
+					</div>
+					<div class="row height" style="background-color: silver;">
+						<i class="fa fa-comments-o fa-lg col-4" aria-hidden="true" style="color: royalblue;"></i>
+					</div>
 				</div>
 			<% }) %> 
-		</div>
+		
 	</div>
 </div>
 <%- include("partials/footer") %>

@@ -27,7 +27,9 @@ const lowSchema = new Schema({
 
 	author: {
 		type: String
-	}
+	},
+
+	likes: [{ type: Schema.Types.ObjectId, ref: "Blogger" }]
 }, { timestamps: true });
 
 const LowSchema = mongoose.model("Low", lowSchema);

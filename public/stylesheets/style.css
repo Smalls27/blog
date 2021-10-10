@@ -128,6 +128,11 @@ body {
 	margin-bottom: 60px;
 }
 
+.smallContainer4 {
+	width: 200px;
+	height: 337px;
+}
+
 a {
 	color: black;
 }
@@ -158,6 +163,10 @@ textarea {
 	margin-bottom: 20px;
 }
 
+.marginBottom1 {
+	margin-bottom: 15px;
+}
+
 .paddingTop {
 	padding-top: 130px;
 }
@@ -184,4 +193,24 @@ textarea {
 
 .roundImage {
 	border-radius: 50%;
+}
+
+.height {
+	height: 50px;
+	padding-top: 7px;
+}
+
+.noButton {
+	background-color: white;
+	border: none;
+}
+
+.noButton:focus {
+	border: none;
+	outline: none;
+}
+
+.form {
+	height: 25px;
+	margin-top: 5px;
 }
