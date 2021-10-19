@@ -56,7 +56,7 @@
 						<h5><%= work.title %></h5>
 					</div>
 					<div class="row height">
-						<form class="form col-4" action="/blog/<%= blogger._id %>/<%= work._id %>" method="POST">
+						<form class="form col-4" action="/blog/<%= blogger._id %>/<%= work._id %>/certify" method="POST">
 							<button class="noButton" type="submit">
 								<i class="fa fa-book fa-lg" aria-hidden="true" style="color: purple;"></i>
 							</button>
@@ -64,7 +64,12 @@
 						<h6 class="col-8"><%= likes %></h6>
 					</div>
 					<div class="row height" style="background-color: orange">
-						<i class="fa fa-scissors fa-lg col-4" aria-hidden="true" style="color: red;"></i>
+						<form class="form col-4" action="/blog/<%= blogger._id %>/<%= work._id %>/decertify" method="POST">
+							<button class="noButton" type="submit">
+								<i class="fa fa-scissors fa-lg" aria-hidden="true" style="color: red;"></i>
+							</button>
+						</form>
+						<h6 class="col-8"><%= dislikes %></h6>
 					</div>
 					<div class="row height" style="background-color: silver;">
 						<i class="fa fa-comments-o fa-lg col-4" aria-hidden="true" style="color: royalblue;"></i>
