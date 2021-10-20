@@ -40,7 +40,7 @@ const bloggerSchema = new Schema({
 		size: Number
 	},
 
-	likedBlogs: [{ type: Schema.Types.ObjectId, ref: "Low"}],
+	comments: [{ type: Schema.Types.ObjectId, ref: "Comment"}],
 
 	listOfWorks: [{ type: Schema.Types.ObjectId, ref: "Low"}],
 

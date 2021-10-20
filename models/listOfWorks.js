@@ -31,9 +31,9 @@ const lowSchema = new Schema({
 
 	likes: [{ type: Schema.Types.ObjectId, ref: "Blogger" }],
 
-	dislikes: [{ type: Schema.Types.ObjectId, ref: "Blogger"}],
+	dislikes: [{ type: Schema.Types.ObjectId, ref: "Blogger" }],
 
-	
+	comments: [{ type: Schema.Types.ObjectId, ref: "Blogger" }]
 }, { timestamps: true });
 
 const LowSchema = mongoose.model("Low", lowSchema);
