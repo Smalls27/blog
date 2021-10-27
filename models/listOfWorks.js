@@ -33,7 +33,14 @@ const lowSchema = new Schema({
 
 	dislikes: [{ type: Schema.Types.ObjectId, ref: "Blogger" }],
 
-	comments: [{ type: Schema.Types.ObjectId, ref: "Blogger" }]
+	comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+
+	replies: [{ type: Schema.Types.ObjectId, ref: "Reply"}],
+
+	date: {
+		type: String
+	}
+
 }, { timestamps: true });
 
 const LowSchema = mongoose.model("Low", lowSchema);

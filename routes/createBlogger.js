@@ -28,7 +28,7 @@ createBlogRouter.route("/")
             password: hashedPassword,
             blogName: req.body.blogName,
             genre: req.body.genre,
-            file: `blogImages/${req.file.originalname}`,
+            file: `/blogImages/${req.file.originalname}`,
             img: {
 				fieldname: req.file.fieldname,
 				originalname: req.file.originalname,

@@ -28,7 +28,7 @@ uploadRouter.route("/")
 	.post(upload.single("bloggerImage"), (req, res) => {
 		const bloggerImage = {
 			title: req.body.blogTitle,
-			file: `images/${req.file.originalname}`,
+			file: `/images/${req.file.originalname}`,
 
 			img: {
 				fieldname: req.file.fieldname,

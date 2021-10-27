@@ -15,7 +15,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <img class="blogEdit" src="/<%= work.file %>" height="300" width="1150" />
+                <img class="blogEdit" src="<%= work.file %>" height="300" width="1150" />
             </div>
             <div class="row">
                 <h1 class="col-4"><%= work.title %></h1>
@@ -23,10 +23,90 @@
                 <h1 class="col-4 text-right"><%= work.author %></h1>
             </div>
             <div class="row marginSpace3">
-                <textarea id="workContent" cols="160" rows="40" readonly>
+                <textarea id="workContent" cols="160" rows="25" readonly>
                     <%= work.content %> 
                 </textarea>
             </div>
         </div>
+
+        <div class="row">
+            <div class="container marginSpace">
+                <div class="row">
+                    <form class="col-1" action="/dashboard/certify/<%= work._id %>/" method="POST">
+                        <button type="submit" class="col noButton1 smallMargin2">
+                            <i class="fa fa-book fa-lg" aria-hidden="true" style="color: purple;"></i>
+                        </button>
+                    </form>
+                    <h6 class="col-1 smallMargin"><%= certify %></h6>
+
+                    <form class="col-1" action="/dashboard/decertify/<%= work._id %>" method="POST">
+                        <button type="submit" class="col noButton1 smallMargin2">
+                            <i class="fa fa-scissors fa-lg" aria-hidden="true" style="color: purple;"></i>
+                        </button>
+                    </form>
+                    <h6 class="col-1 smallMargin"><%= decertify %></h6>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="container marginSpace2 textPadding">
+            <form class="col" action="/dashboard/<%= work._id %>" method="POST">
+                <div class="row">
+                    <textarea class="col-8 form-control" name="comment" placeholder="Your thoughts on this work..."></textarea>
+                <div class="col-2"></div>
+                <button class="col-2 btn btn-primary" type="submit">Post</button>
+            </form>
+        </div>
     </div>
-<%- include("partials/header") %>
+
+    <div id="reply" class="container marginSpace4">
+        <% comments.forEach(comment => { %>
+            <div class="container marginBottom">
+                <div class="row round commentColor">
+                    <img class="imgPadding" src="<%= comment.postedby.file %>" height="30" width="30" />
+                    <div class="identPadding"><%= comment.postedby.blogName %></div> 
+                    <div class="identPadding">Likes: <%= comment.likes.length %></div>
+                </div>
+                <div class="row">
+                    <div class="textPadding1"><%= comment.text %> </div>
+                </div>
+                <div class="row">
+                    <div class="col-10"></div>
+                    <form class="col-1" action="/dashboard/<%= work._id %>/<%= comment._id %>" method="POST">
+                        <button type="submit" class="noButton2 wordPadding" style="margin-right: 3px;">
+                            <h6>like</h6>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="row">
+                <% comment.replies.forEach(reply => { %>
+                    <div class="container marginSpace5 textPadding2 widthChange1">
+                        <div class="row">
+                            <img class="imgPadding1" src="<%= reply.posted.file %>" height="30" width="30" />
+                            <div class="identPadding1"><%= reply.posted.blogName %></div>
+                        </div>
+                        <div class="row">
+                            <h6 class="textPadding1"><%= reply.text %></h6>
+                        </div>
+                    </div>
+                <% }) %> 
+                </div>
+
+                <div class="row marginBottom2">
+                    <div class="container marginSpace5 textPadding widthChange1">
+                        <form class="col" action="/dashboard/<%= work._id %>/<%= comment._id %>/reply" method="POST">
+                            <div class="row">
+                                <textarea class="col-8 form-control" rows="1" name="reply" placeholder="Reply to comment..."></textarea>
+                                <div class="col-2"></div>
+                                <button class="col-2 btn btn-primary" type="submit">Reply</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }) %> 
+    </div>
+<%- include("partials/footer") %>

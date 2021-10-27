@@ -30,7 +30,7 @@ createMerchRouter.route("/")
     .post(upload.single("merchImage"), (req, res) => {
         const merchandise = {
             nameOfMerch: req.body.merchName,
-            file: `merchImage/${req.file.filename}`,
+            file: `/merchImage/${req.file.filename}`,
 
             img: {
 		        fieldname: req.file.fieldname,

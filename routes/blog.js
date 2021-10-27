@@ -65,7 +65,7 @@ usersViewRouter.route("/:id")
           res.render("blog", {
             blogger: blogger, 
             followers: followers, 
-            certify: "Certify", 
+            certify: "Decertify", 
             following: following, 
             likes: likes, 
             dislikes: dislikes 
@@ -92,117 +92,5 @@ usersViewRouter.route("/:id")
     })
     .catch(err => console.log(err));
   });
-
-usersViewRouter.route("/:id/:id2/certify")
-  .post(async (req, res) => {
-    const id = req.params;
-
-    await Bloggers.findById(id.id)
-    .populate("listOfWorks")
-    .populate("merchandise")
-    .then(async blogger => {
-      await ListOfWorks.findById(id.id2)
-      .then(work => {
-        
-        if (work.dislikes.includes(req.user._id) && work.likes.includes(req.user._id)) {
-
-          work.dislikes.pop(req.user._id);
-          work.save();
-          res.render("blog", {
-            blogger: blogger, 
-            followers: blogger.followers.length, 
-            certify: "Certify", 
-            following: blogger.following.length, 
-            likes: work.likes.length, 
-            dislikes: work.dislikes.length
-          })
-        } else if (work.likes.includes(req.user._id)) {
-
-          work.likes.pop(req.user._id);
-          work.save();
-          res.render("blog", {
-            blogger: blogger, 
-            followers: blogger.followers.length, 
-            certify: "Certify", 
-            following: blogger.following.length, 
-            likes: work.likes.length, 
-            dislikes: work.dislikes.length 
-          })
-
-        } else {
-
-          work.dislikes.pop(req.user._id);
-          work.likes.push(req.user._id);
-          work.save();
-          res.render("blog", {
-            blogger: blogger, 
-            followers: blogger.followers.length, 
-            certify: "Certify", 
-            following: blogger.following.length, 
-            likes: work.likes.length, 
-            dislikes: work.dislikes.length 
-          })
-        }
-      })
-      .catch(err => console.log(err));
-    })
-    .catch(err => console.log(err));
-  });
-
-usersViewRouter.route("/:id/:id2/decertify")
-  .post(async (req, res) => {
-    const id = req.params;
-
-    await Bloggers.findById(id.id)
-    .populate("listOfWorks")
-    .populate("merchandise")
-    .then(async blogger => {
-      
-      await ListOfWorks.findById(id.id2)
-      .then(work => {
-        
-        if (work.dislikes.includes(req.user._id) && work.likes.includes(req.user._id)) {
-
-          work.likes.pop(req.user._id);
-          work.save();
-          res.render("blog", {
-            blogger: blogger, 
-            followers: blogger.followers.length, 
-            certify: "Certify", 
-            following: blogger.following.length, 
-            likes: work.likes.length, 
-            dislikes: work.dislikes.length 
-          });
-        } else if (work.dislikes.includes(req.user._id)) {
-
-          work.dislikes.pop(req.user._id);
-          work.save();
-          res.render("blog", {
-            blogger: blogger, 
-            followers: blogger.followers.length, 
-            certify: "Certify", 
-            following: blogger.following.length, 
-            likes: work.likes.length, 
-            dislikes: work.dislikes.length 
-          });
-        } else {
-
-          work.likes.pop(req.user._id);
-          work.dislikes.push(req.user._id);
-          work.save();
-          res.render("blog", {
-            blogger: blogger, 
-            followers: blogger.followers.length, 
-            certify: "Certify", 
-            following: blogger.following.length, 
-            likes: work.likes.length, 
-            dislikes: work.dislikes.length
-          })
-        }
-      })
-      .catch(err => console.log(err));
-    })
-    .catch(err => console.log(err));
-  })
 
 module.exports = usersViewRouter;

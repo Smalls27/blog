@@ -42,6 +42,8 @@ const bloggerSchema = new Schema({
 
 	comments: [{ type: Schema.Types.ObjectId, ref: "Comment"}],
 
+	replies: [{ type: Schema.Types.ObjectId, ref: "Reply"}],
+
 	listOfWorks: [{ type: Schema.Types.ObjectId, ref: "Low"}],
 
 	merchandise: [{ type: Schema.Types.ObjectId, ref: "Merchandise"}],

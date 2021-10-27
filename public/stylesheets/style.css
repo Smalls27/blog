@@ -47,6 +47,16 @@ body {
 	margin-top: 108px;
 }
 
+.marginSpace4 {
+	margin-top: 108px;
+	overflow: scroll;
+	height: 600px;
+}
+
+.marginSpace5 {
+	margin-top: 9px;
+}
+
 .hrStyle {
 	background-color: black;
 	margin-top: 60px;
@@ -90,6 +100,12 @@ body {
 
 .widthChange {
 	width: 500px;
+}
+
+.widthChange1 {
+	width: 80%;
+	margin-left: auto;
+	margin-right: 0%;
 }
 
 .labelClass {
@@ -167,6 +183,10 @@ textarea {
 	margin-bottom: 15px;
 }
 
+.marginBottom2 {
+	margin-bottom: 70px;
+}
+
 .paddingTop {
 	padding-top: 130px;
 }
@@ -205,6 +225,24 @@ textarea {
 	border: none;
 }
 
+.noButton1 {
+	background-color: white;
+	border: none;
+	background-color: rgba(112, 60, 146, 0.0);
+}
+
+.noButton2 {
+	background-color: rgba(114, 124, 219, 0.3);
+	border: none;
+	width: 100%;
+}
+
+.noButton2:focus {
+	background-color: rgba(114, 124, 219, 0.3);
+	border: none;
+	outline: none;
+}
+
 .noButton:focus {
 	border: none;
 	outline: none;
@@ -213,4 +251,63 @@ textarea {
 .form {
 	height: 25px;
 	margin-top: 5px;
+}
+
+.textPadding {
+	padding: 15px;
+	border-radius: 5px;
+	background-color: rgba(112, 60, 146, 0.3);
+}
+
+.textPadding1 {
+	padding: 15px 15px 15px 45px;
+	border-radius: 5px;
+}
+
+.textPadding2 {
+	padding-top: 0px;
+	border-radius: 5px;
+	background-color: rgba(112, 60, 146, 0.3);
+}
+
+.identPadding {
+	padding: 10px;
+	padding-top: 8px;
+}
+
+.identPadding1 {
+	padding: 10px;
+	padding-top: 4px;
+}
+
+.imgPadding {
+	padding-top: 10px;
+	padding-left: 10px;
+	border-radius: 10px;
+}
+
+.imgPadding1 {
+	margin-top: 3px;
+	margin-left: 3px;
+	border-radius: 4px;
+}
+
+.commentColor {
+	background-color: rgba(112, 60, 146, 0.3);
+}
+
+.wordPadding {
+	padding: 4px;
+}
+
+.round {
+	border-radius: 10px;
+}
+
+.smallMargin {
+	margin-top: 5px;
+}
+
+.smallMargin2 {
+	margin-bottom: 5px;
 }
