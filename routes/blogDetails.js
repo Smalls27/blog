@@ -17,8 +17,8 @@ blogDetailsRouter.route("/:id")
         .then(async work => {
             await Comments.find()
             .populate({ path: "replies", populate: { path: "posted"}})
+            .populate("postedby")
             .then(comments => {
-                console.log(comments.replies);
                 res.render("blogDetails", { 
                     work: work,
                     certify: work.likes.length,
@@ -31,7 +31,6 @@ blogDetailsRouter.route("/:id")
     })
     .post(async (req, res) => {
         const id = req.params.id;
-        let comments = await Comments.find({})
         const comment = {
             text: req.body.comment,
             postedby: req.user._id

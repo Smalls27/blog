@@ -296,6 +296,16 @@ textarea {
 	background-color: rgba(112, 60, 146, 0.3);
 }
 
+.messageColor {
+	padding: 7px 0px 7px 15px;
+	background-color: rgba(126, 80, 200, .3);
+}
+
+.messageColor:hover {
+	padding: 7px 0px 7px 15px;
+	background-color: rgba(126, 80, 200, .6);
+}
+
 .wordPadding {
 	padding: 4px;
 }

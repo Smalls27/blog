@@ -10,6 +10,9 @@
 			<a class="nav-link" href="/merchandise">Merchandise</a>
 		</li>
 	</ul>
+	<form class="mr-3">
+		<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#messages">Messages</button>
+	</form>
 	<form class="mr-4">
 		<h6><a href="/upload">Upload Work</a></h6>
 	</form>
@@ -23,6 +26,33 @@
 		<button class="btn btn-primary btn-block" type="submit">Log Out</button>
 	</a>
 </nav>
+
+<div class="modal fade" id="messages" tabindex="-1" aria-labelledby="messagesLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  	<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Messages</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div>
+					<% blogger.followers.forEach(follower => { %>
+						<div>
+							<h6 class="messageColor"><%= follower.blogName %></h6>
+						</div>
+					<% }) %>
+				</div>
+				<textarea class="form-control" rows="4" cols="55"></textarea>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Send message</button>
+			</div>
+	  	</div>
+	</div>
+</div>
 
 <div class="container">
 	<div class="row blogTitle">

@@ -13,12 +13,24 @@ dashboardRouter.route("/")
 		var imageFile;
 		await Bloggers.findOne({ _id: req.user._id })
 		.populate("listOfWorks")
-		.then(list => {
-			// console.log(list.listOfWorks)
-		res.render("dashboard", { workList: list.listOfWorks, work: work, blogName: list.blogName, imageFile: list.file });
+		.populate("followers")
+		.then(blogger => {
+			res.render("dashboard", {
+				blogger: blogger, 
+				workList: blogger.listOfWorks, 
+				work: work, 
+				blogName: blogger.blogName, 
+				imageFile: blogger.file });
 		})
 		.catch(err => console.log(err));
-	});
+	})
+	.post(async (req, res) => {
+		await Bloggers.findOne({ id: req.user.id})
+		.populate("followers")
+		.then(bloggers => {
+
+		})
+	})
 
 dashboardRouter.route('/logout')
 	.get((req, res) => {
