@@ -3,6 +3,7 @@ const blogDetailsRouter = express.Router();
 const listOfWorks = require("../models/listOfWorks");
 const Comments = require("../models/comments");
 const Replies = require("../models/reply");
+const dateFormat = require("../dateFormat");
 
 const isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) return next();
@@ -15,7 +16,7 @@ blogDetailsRouter.route("/:id")
         
         await listOfWorks.findById(id)
         .then(async work => {
-            await Comments.find()
+            await Comments.find({})
             .populate({ path: "replies", populate: { path: "posted"}})
             .populate("postedby")
             .then(comments => {
@@ -29,11 +30,14 @@ blogDetailsRouter.route("/:id")
         })
         .catch( err => console.log(err));
     })
+
+blogDetailsRouter.route("/comment/:id")
     .post(async (req, res) => {
         const id = req.params.id;
         const comment = {
             text: req.body.comment,
-            postedby: req.user._id
+            postedby: req.user._id,
+            date: `${dateFormat.dayOfMonth()} ${dateFormat.month()}, ${dateFormat.year()} ${dateFormat.time()}`
         }
 
         await Comments.find({})
@@ -50,6 +54,7 @@ blogDetailsRouter.route("/:id")
                 })
             })
         })
+        .catch(err => console.log(err))
     });
 
 blogDetailsRouter.route("/certify/:id")
@@ -115,16 +120,22 @@ blogDetailsRouter.route("/decertify/:id")
 blogDetailsRouter.route("/:id/:id2")
     .post(async (req, res) => {
         const id = req.params;
-        
         await listOfWorks.findById(id.id)
         .then(async work => {
             await Comments.findById(id.id2)
             .then(async comment => {
                 Comments.find({})
                 .then(comments => {
-                    comment.likes.push(req.user._id);
-                    comment.save();
-                    res.redirect(`/dashboard/${req.params.id}`);
+
+                    if (comment.likes.includes(req.user._id)) {
+                        comment.likes.pop(req.user._id);
+                        comment.save();
+                        res.redirect(`/dashboard/${req.params.id}`);
+                    } else {
+                        comment.likes.push(req.user._id);
+                        comment.save();
+                        res.redirect(`/dashboard/${req.params.id}`);
+                    }
                 })
             })
         })
@@ -143,7 +154,7 @@ blogDetailsRouter.route("/:id/:id2/reply")
                 const reply = {
                     text: req.body.reply,
                     posted: req.user._id,
-                    date: new Date().toDateString()
+                    date: `${dateFormat.dayOfMonth()} ${dateFormat.month()}, ${dateFormat.year()} ${dateFormat.time()}`
                 }
 
                 await Replies.create(reply)
@@ -152,6 +163,28 @@ blogDetailsRouter.route("/:id/:id2/reply")
                     comment.save();
                     res.redirect(`/dashboard/${id.id}`)
                 })
+            })
+        })
+    })
+
+blogDetailsRouter.route("/:id/:id2/reply/likes")
+    .post(async (req, res) => {
+        const id = req.params;
+
+        await listOfWorks.findById(id.id)
+        .then(async work => {
+
+            await Replies.findById(id.id2)
+            .then(async reply => {
+                if (reply.likes.includes(req.user._id)) {
+                    reply.likes.pop(req.user._id);
+                    reply.save();
+                    res.redirect(`/dashboard/${id.id}`);
+                } else {
+                    reply.likes.push(req.user._id);
+                    reply.save();
+                    res.redirect(`/dashboard/${id.id}`);
+                }
             })
         })
     })

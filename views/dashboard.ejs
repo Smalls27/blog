@@ -11,7 +11,10 @@
 		</li>
 	</ul>
 	<form class="mr-3">
-		<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#messages">Messages</button>
+		<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#messages">Send Mail</button>
+	</form>
+	<form class="mr-2">
+		<h6><a href="dashboard/<%= blogger._id %>/messages">Mailbox</a></h6>
 	</form>
 	<form class="mr-4">
 		<h6><a href="/upload">Upload Work</a></h6>
@@ -36,20 +39,23 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
-				<div>
-					<% blogger.followers.forEach(follower => { %>
-						<div>
-							<h6 class="messageColor"><%= follower.blogName %></h6>
-						</div>
-					<% }) %>
+			<form action="/dashboard" method="post">
+				<div class="modal-body">
+					<div>
+						<% blogger.followers.forEach(follower => { %>
+							<div>
+								<h6 class="messageColor"><%= follower.blogName %></h6>
+							</div>
+						<% }) %>
+					</div>
+					<input id="recipient" class="form-control smallMargin2" type="text" placeholder="Recipient(s)..." name="recipient" />
+					<textarea id="message" class="form-control" rows="4" cols="55" name="message"></textarea>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Send message</button>
+					</div>
 				</div>
-				<textarea class="form-control" rows="4" cols="55"></textarea>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Send message</button>
-			</div>
+			</form>
 	  	</div>
 	</div>
 </div>

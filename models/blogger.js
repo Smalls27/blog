@@ -40,6 +40,8 @@ const bloggerSchema = new Schema({
 		size: Number
 	},
 
+	messages: [{ type: Schema.Types.ObjectId, ref: "Message"}],
+
 	comments: [{ type: Schema.Types.ObjectId, ref: "Comment"}],
 
 	replies: [{ type: Schema.Types.ObjectId, ref: "Reply"}],

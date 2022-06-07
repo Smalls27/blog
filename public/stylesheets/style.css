@@ -280,6 +280,11 @@ textarea {
 	padding-top: 4px;
 }
 
+.identPadding2 {
+	padding-top: 90px;
+	word-wrap: break-all;
+}
+
 .imgPadding {
 	padding-top: 10px;
 	padding-left: 10px;
@@ -320,4 +325,42 @@ textarea {
 
 .smallMargin2 {
 	margin-bottom: 5px;
+}
+
+.scroll {
+	overflow: scroll;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.messageBoxStyle {
+	height: 400px;
+	width: 50%;
+	margin-top: 5px;
+	padding: 7px;
+}
+
+.messageStyle {
+	border: 3px solid rgba(126, 80, 200, .3);
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.topRadius {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.bottomRadius {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.wordBreak {
+	word-break: break-all;
+	padding-top: 15px;
+	padding-bottom: 10px;
 }

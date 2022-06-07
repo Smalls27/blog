@@ -17,8 +17,6 @@ loginRouter.route("/")
             username: req.body.username,
             password: req.body.password
         }
-
-        console.log(login)
     })
 
 module.exports = loginRouter;

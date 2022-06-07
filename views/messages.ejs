@@ -1,0 +1,36 @@
+<%- include("partials/header")  %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a id="blogLogo" class="navbar-brand" href="http://localhost:3000/">Blogrealm</a>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+        </ul>
+        
+        <form action="/createBlogger" method="GET">
+            <button class="btn btn-primary" type="submit">Create an account</button>
+        </form>
+    </nav>
+
+    <div class="container scroll messageBoxStyle">
+        <% messages.forEach(message => { %>
+            <div class="container messageStyle">
+                <div class="row topRadius">
+                    <div class="col-4"><%= message.messenger %></div>
+                    <div class="col-8"><%= message.date %></div>
+                </div>
+                <div class="row bottomRadius">
+                    <div class="col indentPadding2">
+                        <p class="col wordBreak"><%= message.message %></p>
+                    </div>
+                </div>
+                <div class="row d-flex flex-row-reverse">
+                    <form action="/dashboard/<%= message._id %>/removeMessage" method="post">
+                        <button type="submit" class="btn btn-secondary btn-sm">Remove</button>
+                    </form>
+                </div> 
+            </div>
+        <% }) %>
+    </div>
+<%- include("partials/footer")  %> 

@@ -52,7 +52,7 @@
         <hr>
 
         <div class="container marginSpace2 textPadding">
-            <form class="col" action="/dashboard/<%= work._id %>" method="POST">
+            <form class="col" action="/dashboard/comment/<%= work._id %>" method="POST">
                 <div class="row">
                     <textarea class="col-8 form-control" name="comment" placeholder="Your thoughts on this work..."></textarea>
                 <div class="col-2"></div>
@@ -68,6 +68,7 @@
                     <img class="imgPadding" src="<%= comment.postedby.file %>" height="30" width="30" />
                     <div class="identPadding"><%= comment.postedby.blogName %></div> 
                     <div class="identPadding">Likes: <%= comment.likes.length %></div>
+                    <div class="identPadding"><%= comment.date %></div>
                 </div>
                 <div class="row">
                     <div class="textPadding1"><%= comment.text %> </div>
@@ -87,9 +88,19 @@
                         <div class="row">
                             <img class="imgPadding1" src="<%= reply.posted.file %>" height="30" width="30" />
                             <div class="identPadding1"><%= reply.posted.blogName %></div>
+                            <div class="identPadding1">Likes: <%= reply.likes.length %></div>
+                            <div class="identPadding1"><%= reply.date %></div>
                         </div>
                         <div class="row">
                             <h6 class="textPadding1"><%= reply.text %></h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-10"></div>
+                            <form class="col-1" action="/dashboard/<%= work._id %>/<%= reply._id %>/reply/likes" method="post">
+                                <button type="submit" class="noButton2 wordPadding">
+                                    <h6>like</h6>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 <% }) %> 
